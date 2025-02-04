@@ -1,5 +1,8 @@
 console.log("Hello world");
 
+// scores
+let humanScore = computerScore = 0
+
 function getComputerChoice() {
   // generate random number
   let random = Math.floor(Math.random() * 3) + 1;
@@ -22,7 +25,6 @@ function getHumanChoice() {
 
   while (input != "r" && input != "p" && input != "s")
     input = prompt("invalid input. Enter 'r', 'p' or 's'");
-
 
   if (input == "r") return "rock";
   if (input == "p") return "paper";
