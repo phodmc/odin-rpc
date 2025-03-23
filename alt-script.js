@@ -2,18 +2,36 @@ let userScore = 0,
   computerScore = 0;
 // gamesPlayed = localStorage.getItem(counter) || 0;
 let startBtn = document.querySelector(".start");
+let resetBtn = document.querySelector(".reset");
 // let gamesCounter = document.getElementById("counter");
 // updateGamesCounter(gamesPlayed);
 const playerChoices = document.querySelectorAll(".rpc");
 
-playerChoices.forEach((playerChoice) => {
-  playerChoice.disabled = true;
+// main
+startBtn.addEventListener("click", (e) => {
+  console.log(e.target);
+
+  // disable start button
+  startBtn.disabled = true;
+  startBtn.classList.add("disabled");
+  // enable reset button
+  resetBtn.disabled = false;
+  resetBtn.classList.remove("disabled");
+
+  // updateGamesCounter(++gamesPlayed);
+  // playGame();
 });
 
-// main
-startBtn.addEventListener("click", () => {
-  updateGamesCounter(++gamesPlayed);
-  playGame();
+resetBtn.addEventListener("click", (e) => {
+  console.log(e.target);
+
+  // enable start button
+  startBtn.disabled = false;
+  startBtn.classList.remove("disabled");
+
+  // disable reset button
+  resetBtn.disabled = true;
+  resetBtn.classList.add("disabled");
 });
 
 function updateGamesCounter(count) {
@@ -60,12 +78,12 @@ function playRound() {
     (userChoice == "scissors" && computerChoice == "paper")
   ) {
     alert(
-      `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`,
+      `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`
     );
     userScore++;
   } else {
     alert(
-      `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`,
+      `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`
     );
     computerScore++;
   }
