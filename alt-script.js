@@ -3,6 +3,7 @@ let userScore = 0,
 // gamesPlayed = localStorage.getItem(counter) || 0;
 let startBtn = document.querySelector(".start");
 let resetBtn = document.querySelector(".reset");
+let message = document.querySelector(".message");
 // let gamesCounter = document.getElementById("counter");
 // updateGamesCounter(gamesPlayed);
 const playerChoices = document.querySelectorAll(".rpc");
@@ -17,6 +18,8 @@ startBtn.addEventListener("click", (e) => {
   // enable reset button
   resetBtn.disabled = false;
   resetBtn.classList.remove("disabled");
+
+  message.textContent = "Game begin. Select a choice below";
 
   // updateGamesCounter(++gamesPlayed);
   // playGame();
