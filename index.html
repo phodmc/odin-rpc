@@ -1,52 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jan Ken Rock</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Jan Ken Rock</title>
-	<link rel="stylesheet" href="style.css">
-</head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <img src="./res/hero.png" alt="" />
+            </div>
 
-<body>
-	<div class="container">
-		<div class="hero">
-			<img src="./res/hero.png" alt="">
-		</div>
+            <div class="scorecard">
+                <div class="player">
+                    <span>Player</span>
+                    <p class="player-score">0</p>
+                </div>
 
-		<div class="scorecard">
-			<div class="player">
-				<span>Player</span>
-				<p class="player-score">0</p>
-			</div>
+                <div>
+                    <span>VS</span>
+                </div>
 
-			<div>
-				<span>VS</span>
-			</div>
+                <div class="computer">
+                    <span>Computer</span>
+                    <p class="computer-score">0</p>
+                </div>
+            </div>
 
-			<div class="computer">
-				<span>Computer</span>
-				<p class="computer-score">0</p>
-			</div>
-		</div>
+            <div class="button-group">
+                <button class="start">Start</button>
+                <button class="reset">Reset</button>
+            </div>
 
-		<div class="button-group">
-			<button class="start">Start</button>
-			<button class="new">New Game</button>
-		</div>
+            <div class="message-container">
+                <span class="message">Click button above to start game</span>
+            </div>
 
-		<div class="message-container">
-			<span class="message">Click button above to start game</span>
-		</div>
+            <div class="rpc-container">
+                <div class="rpc">
+                    <img class="rock" src="res/rock1.png" alt="" />
+                </div>
+                <div class="paper rpc">
+                    <img class="paper" src="res/paper1.png" alt="" />
+                </div>
+                <div class="scissors rpc">
+                    <img class="scissors" src="res/scissors1.png" alt="" />
+                </div>
+            </div>
+        </div>
 
-		<div class="rpc-container">
-			<div class="rock rpc"><img src="res/rock.png" alt=""></div>
-			<div class="paper rpc"><img src="res/paper.png" alt=""></div>
-			<div class="scissors rpc"><img src="res/scissors.png" alt=""></div>
-		</div>
-
-
-	</div>
-</body>
-
+        <script src="alt-script.js"></script>
+    </body>
 </html>

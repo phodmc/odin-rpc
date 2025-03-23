@@ -1,16 +1,23 @@
-let userScore = 0, computerScore = 0, gamesPlayed = localStorage.getItem(counter) || 0;
-let startBtn = document.getElementById('start')
-let gamesCounter = document.getElementById('counter')
-updateGamesCounter(gamesPlayed)
+let userScore = 0,
+  computerScore = 0;
+// gamesPlayed = localStorage.getItem(counter) || 0;
+let startBtn = document.querySelector(".start");
+// let gamesCounter = document.getElementById("counter");
+// updateGamesCounter(gamesPlayed);
+const playerChoices = document.querySelectorAll(".rpc");
+
+playerChoices.forEach((playerChoice) => {
+  playerChoice.disabled = true;
+});
 
 // main
-startBtn.addEventListener('click', () => {
-  updateGamesCounter(++gamesPlayed)
-  playGame()
-})
+startBtn.addEventListener("click", () => {
+  updateGamesCounter(++gamesPlayed);
+  playGame();
+});
 
 function updateGamesCounter(count) {
-  gamesCounter.textContent = count
+  gamesCounter.textContent = count;
 }
 
 function getComputerChoice() {
@@ -26,7 +33,7 @@ function getComputerChoice() {
     default:
       return "scissors";
   }
-};
+}
 
 function playRound() {
   let userChoice = prompt("Enter 'rock', 'paper' or 'scissors'")
@@ -35,7 +42,7 @@ function playRound() {
 
   while (!["rock", "paper", "scissors"].includes(userChoice)) {
     if (userChoice == "q") {
-      if (confirm('Are you sure you wanna quit? ')) return true
+      if (confirm("Are you sure you wanna quit? ")) return true;
     }
 
     userChoice = prompt("Only 'rock', 'paper' or 'scissors. Try again: '")
@@ -52,13 +59,17 @@ function playRound() {
     (userChoice == "paper" && computerChoice == "rock") ||
     (userChoice == "scissors" && computerChoice == "paper")
   ) {
-    alert(`Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`);
+    alert(
+      `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`,
+    );
     userScore++;
   } else {
-    alert(`Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`);
+    alert(
+      `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`,
+    );
     computerScore++;
   }
-};
+}
 
 function playGame() {
   let userName = prompt("What do you want to be called? ", "RPS-Master");
@@ -71,9 +82,13 @@ function playGame() {
 
     if (isQuit) break;
   }
-  alert(
-    `final scores = ${userName}: ${userScore} | Machine: ${computerScore}`
-  );
+  alert(`final scores = ${userName}: ${userScore} | Machine: ${computerScore}`);
 
-  localStorage.setItem(counter, gamesPlayed)
-};
+  localStorage.setItem(counter, gamesPlayed);
+}
+
+playerChoices.forEach((playerChoice) => {
+  playerChoice.addEventListener("click", (event) => {
+    console.log(event.target.classList.value);
+  });
+});
