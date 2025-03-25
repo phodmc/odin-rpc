@@ -34,6 +34,9 @@ startBtn.addEventListener("click", (e) => {
 
   message.textContent = "Game begin. Select a choice below";
 
+  // enable player choice selection
+  playerChoices.forEach((choice) => choice.classList.remove("disabled"));
+
   // updateGamesCounter(++gamesPlayed);
   // playGame();
 });
@@ -50,6 +53,9 @@ resetBtn.addEventListener("click", (e) => {
     resetBtn.disabled = true;
     resetBtn.classList.add("disabled");
   }
+
+  // disable player choice selection
+  playerChoices.forEach((choice) => choice.classList.add("disabled"));
 });
 
 function updateGamesCounter(count) {
