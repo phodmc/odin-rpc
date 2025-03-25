@@ -5,15 +5,9 @@ let startBtn = document.querySelector(".start");
 let resetBtn = document.querySelector(".reset");
 let message = document.querySelector(".message");
 let playerName = document.querySelector(".player-name");
-
+const playerChoices = document.querySelectorAll(".rpc");
 // let gamesCounter = document.getElementById("counter");
 // updateGamesCounter(gamesPlayed);
-const playerChoices = document.querySelectorAll(".rpc");
-
-let pName = prompt("What is your name, Champ?", "Player");
-playerName.textContent = pName;
-
-message.textContent = `Welcome ${pName}. Click button above to start.`;
 
 // main
 startBtn.addEventListener("click", (e) => {
@@ -100,48 +94,19 @@ function playRound() {
       }
     });
   });
-  // let userChoice = prompt("Enter 'rock', 'paper' or 'scissors'")
-  //   .toLowerCase()
-  //   .trim();
-
-  // while (!["rock", "paper", "scissors"].includes(userChoice)) {
-  //   if (userChoice == "q") {
-  //     if (confirm("Are you sure you wanna quit? ")) return true;
-  //   }
-
-  //   userChoice = prompt("Only 'rock', 'paper' or 'scissors. Try again: '")
-  //     .toLowerCase()
-  //     .trim();
-  // }
-
-  // let computerChoice = getComputerChoice();
-
-  // if (userChoice == computerChoice) {
-  //   alert("Tight Game. It is a draw!");
-  // } else if (
-  //   (userChoice == "rock" && computerChoice == "scissors") ||
-  //   (userChoice == "paper" && computerChoice == "rock") ||
-  //   (userChoice == "scissors" && computerChoice == "paper")
-  // ) {
-  //   alert(
-  //     `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`
-  //   );
-  //   userScore++;
-  // } else {
-  //   alert(
-  //     `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`
-  //   );
-  //   computerScore++;
-  // }
 }
 
 function playGame() {
-  let userName = prompt("What do you want to be called? ", "RPS-Master");
+  let userName = prompt("What is your name, Champ?", "Player");
+  playerName.textContent = userName;
+
   let rounds = prompt("How many rounds do you want to play? ", 3);
   rounds = +rounds; // converts rounds value to a positive integer
 
+  message.textContent = `Welcome ${userName}. Click button above to start.`;
+
   for (let i = 1; i <= rounds; i++) {
-    alert(`round ${i}, fight`);
+    message.textContent = `round ${i}, fight`;
     let isQuit = playRound();
 
     if (isQuit) break;
