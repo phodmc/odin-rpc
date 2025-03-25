@@ -4,9 +4,15 @@ let userScore = 0,
 let startBtn = document.querySelector(".start");
 let resetBtn = document.querySelector(".reset");
 let message = document.querySelector(".message");
+let playerName = document.querySelector(".player-name");
 // let gamesCounter = document.getElementById("counter");
 // updateGamesCounter(gamesPlayed);
 const playerChoices = document.querySelectorAll(".rpc");
+
+let pName = prompt("What is your name, Champ? ");
+playerName.textContent = pName;
+
+message.textContent = `Welcome ${pName}. Click button above to start.`;
 
 // main
 startBtn.addEventListener("click", (e) => {
@@ -28,13 +34,15 @@ startBtn.addEventListener("click", (e) => {
 resetBtn.addEventListener("click", (e) => {
   console.log(e.target);
 
-  // enable start button
-  startBtn.disabled = false;
-  startBtn.classList.remove("disabled");
+  if (confirm("Are you sure? Game data will be cleared.")) {
+    // enable start button
+    startBtn.disabled = false;
+    startBtn.classList.remove("disabled");
 
-  // disable reset button
-  resetBtn.disabled = true;
-  resetBtn.classList.add("disabled");
+    // disable reset button
+    resetBtn.disabled = true;
+    resetBtn.classList.add("disabled");
+  }
 });
 
 function updateGamesCounter(count) {
