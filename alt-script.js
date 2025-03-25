@@ -15,12 +15,6 @@ playerName.textContent = pName;
 
 message.textContent = `Welcome ${pName}. Click button above to start.`;
 
-playerChoices.forEach((choice) => {
-  choice.addEventListener("click", (e) => {
-    console.log(choice.classList[0]);
-  });
-});
-
 // main
 startBtn.addEventListener("click", (e) => {
   console.log(e.target);
@@ -36,6 +30,8 @@ startBtn.addEventListener("click", (e) => {
 
   // enable player choice selection
   playerChoices.forEach((choice) => choice.classList.remove("disabled"));
+
+  playRound();
 
   // updateGamesCounter(++gamesPlayed);
   // playGame();
@@ -78,39 +74,65 @@ function getComputerChoice() {
 }
 
 function playRound() {
-  let userChoice = prompt("Enter 'rock', 'paper' or 'scissors'")
-    .toLowerCase()
-    .trim();
-
-  while (!["rock", "paper", "scissors"].includes(userChoice)) {
-    if (userChoice == "q") {
-      if (confirm("Are you sure you wanna quit? ")) return true;
-    }
-
-    userChoice = prompt("Only 'rock', 'paper' or 'scissors. Try again: '")
-      .toLowerCase()
-      .trim();
-  }
-
   let computerChoice = getComputerChoice();
+  let userChoice = "rock";
 
-  if (userChoice == computerChoice) {
-    alert("Tight Game. It is a draw!");
-  } else if (
-    (userChoice == "rock" && computerChoice == "scissors") ||
-    (userChoice == "paper" && computerChoice == "rock") ||
-    (userChoice == "scissors" && computerChoice == "paper")
-  ) {
-    alert(
-      `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`
-    );
-    userScore++;
-  } else {
-    alert(
-      `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`
-    );
-    computerScore++;
-  }
+  playerChoices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+      userChoice = choice.classList[0];
+
+      console.log(`${userChoice} vs ${computerChoice}`);
+
+      if (userChoice == computerChoice) {
+        message.textContent = "Tight Game. It is a draw!";
+      } else if (
+        (userChoice == "rock" && computerChoice == "scissors") ||
+        (userChoice == "paper" && computerChoice == "rock") ||
+        (userChoice == "scissors" && computerChoice == "paper")
+      ) {
+        message.textContent = `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`;
+
+        userScore++;
+      } else {
+        message.textContent = `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`;
+
+        computerScore++;
+      }
+    });
+  });
+  // let userChoice = prompt("Enter 'rock', 'paper' or 'scissors'")
+  //   .toLowerCase()
+  //   .trim();
+
+  // while (!["rock", "paper", "scissors"].includes(userChoice)) {
+  //   if (userChoice == "q") {
+  //     if (confirm("Are you sure you wanna quit? ")) return true;
+  //   }
+
+  //   userChoice = prompt("Only 'rock', 'paper' or 'scissors. Try again: '")
+  //     .toLowerCase()
+  //     .trim();
+  // }
+
+  // let computerChoice = getComputerChoice();
+
+  // if (userChoice == computerChoice) {
+  //   alert("Tight Game. It is a draw!");
+  // } else if (
+  //   (userChoice == "rock" && computerChoice == "scissors") ||
+  //   (userChoice == "paper" && computerChoice == "rock") ||
+  //   (userChoice == "scissors" && computerChoice == "paper")
+  // ) {
+  //   alert(
+  //     `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`
+  //   );
+  //   userScore++;
+  // } else {
+  //   alert(
+  //     `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`
+  //   );
+  //   computerScore++;
+  // }
 }
 
 function playGame() {
