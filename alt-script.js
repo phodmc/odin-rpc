@@ -5,14 +5,21 @@ let startBtn = document.querySelector(".start");
 let resetBtn = document.querySelector(".reset");
 let message = document.querySelector(".message");
 let playerName = document.querySelector(".player-name");
+
 // let gamesCounter = document.getElementById("counter");
 // updateGamesCounter(gamesPlayed);
 const playerChoices = document.querySelectorAll(".rpc");
 
-let pName = prompt("What is your name, Champ? ");
+let pName = prompt("What is your name, Champ?", "Player");
 playerName.textContent = pName;
 
 message.textContent = `Welcome ${pName}. Click button above to start.`;
+
+playerChoices.forEach((choice) => {
+  choice.addEventListener("click", (e) => {
+    console.log(choice.classList[0]);
+  });
+});
 
 // main
 startBtn.addEventListener("click", (e) => {
@@ -115,9 +122,3 @@ function playGame() {
 
   localStorage.setItem(counter, gamesPlayed);
 }
-
-playerChoices.forEach((playerChoice) => {
-  playerChoice.addEventListener("click", (event) => {
-    console.log(event.target.classList.value);
-  });
-});

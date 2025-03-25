@@ -84,3 +84,8 @@ button.disabled {
   color: whitesmoke;
   cursor: not-allowed;
 }
+
+div.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
