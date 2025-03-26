@@ -6,6 +6,8 @@ let resetBtn = document.querySelector(".reset");
 let message = document.querySelector(".message");
 let playerName = document.querySelector(".player-name");
 const playerChoices = document.querySelectorAll(".rpc");
+let playerScoreDisplay = document.querySelector(".player-score");
+let compScoreDisplay = document.querySelector(".computer-score");
 // let gamesCounter = document.getElementById("counter");
 // updateGamesCounter(gamesPlayed);
 
@@ -52,6 +54,11 @@ function updateGamesCounter(count) {
   gamesCounter.textContent = count;
 }
 
+function updateScoreCounter() {
+  playerScoreDisplay.textContent = userScore;
+  compScoreDisplay.textContent = computerScore;
+}
+
 function getComputerChoice() {
   // generate random number between 1 & 3 inclusive
   let random = Math.floor(Math.random() * 3 + 1);
@@ -68,11 +75,11 @@ function getComputerChoice() {
 }
 
 function playRound() {
-  let computerChoice = getComputerChoice();
   let userChoice = "rock";
 
   playerChoices.forEach((choice) => {
     choice.addEventListener("click", () => {
+      let computerChoice = getComputerChoice();
       userChoice = choice.classList[0];
 
       console.log(`${userChoice} vs ${computerChoice}`);
@@ -85,12 +92,13 @@ function playRound() {
         (userChoice == "scissors" && computerChoice == "paper")
       ) {
         message.textContent = `Hurray! You won!!! \nYour ${userChoice} beats the computers ${computerChoice}`;
-
         userScore++;
+        updateScoreCounter();
       } else {
         message.textContent = `Womp Womp ): You Lose!\nThe computers ${computerChoice} beats your ${userChoice}`;
 
         computerScore++;
+        updateScoreCounter();
       }
     });
   });
