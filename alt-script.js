@@ -58,6 +58,14 @@ function playGame() {
 
   if (playerName.textContent == "Player" || playerName.textContent == "") {
     let userName = prompt("What is your name, Champ?", "Player");
+
+    while (!userName) {
+      userName = prompt(
+        "Name can't be empty. What do you wanna be called?",
+        "Champ"
+      );
+    }
+
     playerName.textContent = userName;
   }
 
