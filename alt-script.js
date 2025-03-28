@@ -56,7 +56,7 @@ function playGame() {
   // reset scores
   resetScores();
 
-  if (playerName.textContent == "Player") {
+  if (playerName.textContent == "Player" || playerName.textContent == "") {
     let userName = prompt("What is your name, Champ?", "Player");
     playerName.textContent = userName;
   }
